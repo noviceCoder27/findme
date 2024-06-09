@@ -3,7 +3,7 @@ import { toastError } from "../utils/toastMessage";
 import { getUserDetails } from "../apis/users";
 
 
-const useUserInfo = () => {
+const useUserInfo = (userName) => {
 
     const [details,setDetails] = useState(null);
     const [loading,setLoading] = useState(true);
@@ -11,7 +11,7 @@ const useUserInfo = () => {
     useEffect(() => {
         const fetchDetails = async() => {
             try {
-                const res = await getUserDetails("mugdha");
+                const res = await getUserDetails(userName);
                 setDetails(res);
                 setLoading(false);
             } catch(err) {
@@ -20,7 +20,7 @@ const useUserInfo = () => {
             }
         }
         fetchDetails();
-    },[]);
+    },[userName]);
 
     return {details,loading};
 }

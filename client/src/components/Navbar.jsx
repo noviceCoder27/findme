@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 
 
 const Navbar = () => {
     const [role,setRole] = useState(localStorage.getItem("role"));
+    const navigate = useNavigate();
+    const {pathname} = useLocation();
     return (
         <nav className="flex flex-wrap items-center justify-between gap-5 p-5 px-10">
             <div>
@@ -25,6 +27,7 @@ const Navbar = () => {
                         localStorage.removeItem("token");
                         localStorage.removeItem("role");
                         setRole(null);
+                        if(pathname === "/users") navigate("/");
                     }}>Sign Out</span>
                 </div>
                 : <div className="border-b-2 border-b-transparent hover:border-b-white">

@@ -9,7 +9,7 @@ import { formatDate } from './../utils/timeFormat';
 
 const UserDetails = () => {
     const {userName} = useParams();
-    const {details} = useUserInfo();
+    const {details} = useUserInfo(userName);
     const profilePicture = useProfilePic(userName);
 
     const displayQualifications = details?.qualifications?.length ? details.qualifications.map((qualification,index) => (
