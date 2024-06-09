@@ -17,8 +17,9 @@ const Home = () => {
     const fetchUser = async() => {
         setLoading(true);
         setUser(null);
+        const name = userName.trim();
         try {
-            const res = await getUserDetails(userName);
+            const res = await getUserDetails(name);
             setUser(res);
             setLoading(false);
         } catch(err) {
