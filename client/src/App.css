@@ -1,0 +1,25 @@
+html {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100dvh;
+    font-family: "Baloo 2", sans-serif;
+    background-image: url("https://www.heyfind.me/mainsearch/assets/search/images/page-background-desktop.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+}
+
+.user-table::-webkit-scrollbar {
+    background-color: transparent;
+    height: 10px;
+}
+
+
+.user-table::-webkit-scrollbar-thumb {
+    background-color: rgb(221, 221, 221);
+    border-radius: 20px;
+}
