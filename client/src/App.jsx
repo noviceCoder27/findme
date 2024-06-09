@@ -7,6 +7,7 @@ import Users from './pages/Users'
 import UserDetails from './pages/UserDetails'
 import { Toaster } from 'react-hot-toast'
 import ProtectedRoutes from './utils/ProtectedRoutes'
+import Error from './pages/Error'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path = "/create" element = {<CreateUser />} />
         <Route path = "/users" element = {<ProtectedRoutes><Users /></ProtectedRoutes>} />
         <Route path = "/users/:userName" element = {<UserDetails />} />
+        <Route path = "*" element = {<Error />} />
       </Routes>
     </Router>
   )

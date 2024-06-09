@@ -62,13 +62,14 @@ export const createUser = async (req,res) => {
             contentType: req.file.mimetype
         };
     }
+    const name = userName.trim();
     const user = new User({
         firstName,
         lastName,
         bio,
         description,
         profilePic: profilePicData,
-        userName,
+        userName: name,
         email,
         password: hash,
         location,
