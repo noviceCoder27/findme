@@ -171,7 +171,7 @@ const CreateUser = () => {
                           <p className="font-bold text-white">Description:</p>
                           <TextEditor value = {userData.description} target = "description" userData = {userData} setUserData = {setUserData}/>
                         </div>
-                        <div className="flex gap-5">
+                        <div className="flex gap-5 max-sm:flex-wrap">
                             <input type="text" name="location" value={userData.location} onChange={handleChange} placeholder="Location" required className="w-full px-3 py-2 text-sm placeholder-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
                             <div className="flex items-center w-full gap-2">
                                 <p className="font-bold text-white cursor-default" title="Date Of Birth">D.O.B.</p>

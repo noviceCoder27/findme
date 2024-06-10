@@ -15,7 +15,7 @@ const QualificationInput = ({ id, data, qualifications, setQualifications }) => 
     return (
         <>
             <input type="text" name="institution" value={data.institution} onChange={handleChange} placeholder="Institution Name" className="w-full px-3 py-2 text-sm placeholder-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
-            <div className="flex items-end gap-5">
+            <div className="flex items-end gap-5 max-sm:flex-wrap">
                 <input type="text" name="gpa" value={data.gpa} onChange={handleChange} placeholder="GPA" className="w-full px-3 py-2 text-sm placeholder-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 h-fit" />
                 <div className="w-full">
                     <label htmlFor="startDate" className="font-bold text-white">Start Date:</label>

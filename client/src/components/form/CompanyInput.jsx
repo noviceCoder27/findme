@@ -13,7 +13,7 @@ const CompanyInput = ({ id, data, career, setCareer }) => {
     return (
         <>
             <input type="text" name="institution" value={data.institution} onChange={handleChange} placeholder="Organization Name" className="w-full px-3 py-2 text-sm placeholder-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
-            <div className="flex items-end gap-5">
+            <div className="flex items-end gap-5 max-sm:flex-wrap">
                 <input type="text" name="role" value={data.role} onChange={handleChange} placeholder="Role" className="w-full px-3 py-2 text-sm placeholder-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 h-fit" />
                 <div className="w-full">
                     <label htmlFor="startDate" className="font-bold text-white">Start Date:</label>
