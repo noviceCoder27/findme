@@ -13,8 +13,7 @@ export const createUser = async (formData) => {
             'Content-Type': 'multipart/form-data'
         }
     });
-    console.log(res);
-    return res;
+    return res.data;
 }
 
 export const listAllUsers = async () => {

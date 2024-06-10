@@ -58,8 +58,10 @@ const CreateUser = () => {
         formData.append('career', JSON.stringify(career));
 
         try {
-            await createUser(formData);
+            const res = await createUser(formData);
             toastSuccess("User created successfully");
+            localStorage.setItem("token",res.token);
+            localStorage.setItem("role",res.role);
             navigate("/");
         } catch (err) {
             toastError(err?.response?.data?.msg || "Error creating user");
@@ -169,9 +171,6 @@ const CreateUser = () => {
                           <p className="font-bold text-white">Description:</p>
                           <TextEditor value = {userData.description} target = "description" userData = {userData} setUserData = {setUserData}/>
                         </div>
-                        
-                        {/* <textarea name="bio" value={userData.bio} onChange={handleChange} placeholder="Bio" required className="w-full px-3 py-2 text-sm placeholder-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea> */}
-                        {/* <textarea name="description" value={userData.description} onChange={handleChange} placeholder="Description" required className="w-full px-3 py-2 text-sm placeholder-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea> */}
                         <div className="flex gap-5">
                             <input type="text" name="location" value={userData.location} onChange={handleChange} placeholder="Location" required className="w-full px-3 py-2 text-sm placeholder-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" />
                             <div className="flex items-center w-full gap-2">
