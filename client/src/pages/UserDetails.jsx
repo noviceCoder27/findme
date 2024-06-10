@@ -46,7 +46,7 @@ const UserDetails = () => {
                     <section className = "flex gap-5 max-md:flex-col">
                         <img src = {profilePicture || ""} alt = "Profile Picture" loading = "lazy" className = "w-[30%] max-h-[350px] min-w-[200px] min-h-[200px]"/>
                         <div>
-                            <div className="flex gap-2 font-bold text-[2rem]">
+                            <div className="flex gap-2 font-bold text-[2.5rem]">
                                 <p>{details?.firstName}</p>
                                 <p>{details?.lastName}</p>
                             </div>
@@ -68,12 +68,12 @@ const UserDetails = () => {
                                 </div>
                             </div>
                             <div className="mt-10 max-md:mt-2">
-                                <p className = "font-semibold">Bio:</p>
-                                <p>{parse(details?.bio)}</p>
+                                <p className = "text-2xl font-semibold">Bio:</p>
+                                <p className="text-gray-100 ">{parse(details?.bio)}</p>
                             </div>
                             <div className="mt-2">
-                                <p className = "font-semibold">Description:</p>
-                                <p>{parse(details?.description)}</p>
+                                <p className = "text-2xl font-semibold">Description:</p>
+                                <p className="text-gray-100">{parse(details?.description)}</p>
                             </div>
                         </div>
                     </section>
