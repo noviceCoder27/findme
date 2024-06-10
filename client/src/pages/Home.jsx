@@ -32,7 +32,7 @@ const Home = () => {
         <div className = "flex flex-col">
             <Navbar />
             <main className="flex flex-col items-center">
-                <section className="mt-5 w-[50%] relative">
+                <section className="mt-5 max-sm:w-[80%] w-[50%] relative">
                     <input 
                     type="text" className="w-full p-5 rounded-xl " 
                     placeholder= "Search Registered Username"

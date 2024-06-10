@@ -24,3 +24,11 @@ export const formatDate = (value) => {
     const year = getYear(value);
     return `${day}-${month}-${year}`;
 }
+
+export const timeFormat = (value) => {
+    const months = ["Jan","Feb","Mar","Apr","May","June","Jul","Aug","Sep","Oct","Nov","Dec"];
+    const day = getDay(value);
+    const month = Number(getMonth(value));
+    const year = getYear(value);
+    return `${day} ${months[month]},${year}`;
+}

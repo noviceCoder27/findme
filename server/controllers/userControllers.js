@@ -32,7 +32,7 @@ export const getProfilePic = async (req, res) => {
     res.send(user.profilePic.data);
 }
 
-export const createUser = async (req,res) => {
+export const createUser = async (req,res,next) => {
     const {
         firstName,
         lastName,
@@ -48,12 +48,18 @@ export const createUser = async (req,res) => {
     } = req.body;
 
     if (!validator.isEmail(email)) {
-        return res.status(400).json({ msg: "Enter valid email" });
+        const error = new Error();
+        error.status = 400;
+        error.msg = "Enter a valid email";
+        next(error);
     }
     const hash = await generateHash(password);
     const findUser = await User.findOne({ $or: [{ email }, { userName }] });
     if (findUser) {
-        return res.status(400).json({ msg: "User already exists" });
+        const error = new Error();
+        error.status = 400;
+        error.msg = "User already exists";
+        next(error);
     }
     let profilePicData = null;
     if (req.file) {
@@ -63,6 +69,10 @@ export const createUser = async (req,res) => {
         };
     }
     const name = userName.trim();
+    const emailStr = email.split("@")[1];
+    const userRole = emailStr.includes("admin") ? "admin" : "user";
+    const qualificationsObj = JSON.parse(qualifications);
+    const careerObj = JSON.parse(career);
     const user = new User({
         firstName,
         lastName,
@@ -71,11 +81,12 @@ export const createUser = async (req,res) => {
         profilePic: profilePicData,
         userName: name,
         email,
+        role: userRole,
         password: hash,
         location,
         dateOfBirth,
-        career,
-        qualifications
+        career: careerObj,
+        qualifications: qualificationsObj
     });
     await user.save();
     const isAdmin = user.role === "admin";

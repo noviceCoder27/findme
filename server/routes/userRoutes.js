@@ -17,7 +17,6 @@ router.get('/',requireAuth,checkAdmin,tryCatch(listAllUsers));
 router.post('/create', upload.single('profilePic'),tryCatch(createUser));
 router.post('/login', tryCatch(login));
 router.put('/:id',requireAuth,tryCatch(updateUser));
-router.delete('/:id',requireAuth,tryCatch(deleteUser))
-
+router.delete('/:id',requireAuth,tryCatch(deleteUser));
 
 export default router;

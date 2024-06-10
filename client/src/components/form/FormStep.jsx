@@ -1,8 +1,8 @@
 
 
-const FormStep = ({ children, show, onNext, onPrev, showNext = true, showPrev = true }) => {
+const FormStep = ({ children, show, onNext, onPrev, showNext = true, showPrev = true}) => {
   if (!show) return null;
-
+  
   return (
     <div className="flex flex-col gap-5">
       {children}

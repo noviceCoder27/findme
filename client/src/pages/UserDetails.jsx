@@ -6,23 +6,34 @@ import { IoLocationSharp } from "react-icons/io5";
 import { FaCalendar } from "react-icons/fa";
 import { formatDate } from './../utils/timeFormat';
 import Loader from "../components/Loader";
+import InfoCard from "../components/InfoCard";
+import parse from 'html-react-parser';
 
 
 const UserDetails = () => {
     const {userName} = useParams();
     const {details,loading} = useUserInfo(userName);
-    const profilePicture = useProfilePic(userName);
-
-    const displayQualifications = details?.qualifications?.length ? details.qualifications.map((qualification,index) => (
-        <div key = {index}>
-            
-        </div>
+    const profilePicture = useProfilePic(userName);  
+    const displayQualifications = details?.qualifications?.length ? details?.qualifications.map((qualification,index) => (
+        <InfoCard 
+        key = {index} 
+        isCareer={false}
+        grade = {qualification.gpa} 
+        institution = {qualification.institution}
+        startDate = {qualification.startDate}
+        endDate = {qualification.endDate}
+        />
     )): <p>Nothing to display...</p>
 
-    const displayCareer = details?.career?.length ? details.career.map((qualification,index) => (
-        <div key = {index}>
-            
-        </div>
+    const displayCareer = details?.career?.length ? details.career.map((company,index) => (
+        <InfoCard 
+        key = {index} 
+        isCareer={true}
+        role = {company.role} 
+        institution = {company.institution}
+        startDate = {company.startDate}
+        endDate = {company.endDate}
+        />
     )): <p>Nothing to display...</p>
 
     return (
@@ -58,11 +69,11 @@ const UserDetails = () => {
                             </div>
                             <div className="mt-10 max-md:mt-2">
                                 <p className = "font-semibold">Bio:</p>
-                                <p>{details?.bio}</p>
+                                <p>{parse(details?.bio)}</p>
                             </div>
                             <div className="mt-2">
                                 <p className = "font-semibold">Description:</p>
-                                <p>{details?.description}</p>
+                                <p>{parse(details?.description)}</p>
                             </div>
                         </div>
                     </section>

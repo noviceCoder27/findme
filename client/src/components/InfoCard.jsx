@@ -1,11 +1,12 @@
+import { timeFormat } from "../utils/timeFormat"
 
 
 const InfoCard = ({isCareer,institution,startDate,endDate,grade,role}) => {
   return (
     <div>
-        <p className="text-lg font-semibold">Central Institue Of Technology</p>
-        <p>25 July,2019- 25 June,2023</p>
-        {isCareer ? <p>SDE-2</p>: <p>Grade: 9.2</p>}
+        <p className="text-lg font-semibold">{institution}</p>
+        <p>{timeFormat(startDate)}- {timeFormat(endDate)}</p>
+        {isCareer ? <p>{role}</p>: <p>Grade: {grade}</p>}
     </div>
   )
 }
